@@ -1259,10 +1259,6 @@ function renderColumn(){
       html += `<div class="yr-tag" style="font-size:11px;line-height:1.15;white-space:nowrap">Spring/<br>Summer</div>`;
     }
     html += `<p class="stratum-label">${req.label}</p>`;
-    if(y === 1 && !yearHasContent(1)){
-      html += `<div class="start-prompt no-print"><div class="chips"><button class="chip add-elective" type="button" onclick="layFirstYear()">standard first year</button></div></div>`;
-    }
-
     if(y === 1 && !bridgeHasTerms('1s')){
       html += `<div class="chips no-print" style="margin-top:10px"><button class="chip add-elective" type="button" onclick="layFieldSchoolYear()">standard first year + field school</button></div>`;
     }
@@ -2045,7 +2041,27 @@ function fitSheetToOnePage(doc){
   fit.style.zoom = (best.s * 0.97).toFixed(4);
 }
 
+// Phones and tablets can't print from a hidden frame, so the sheet opens in its own tab with a Save / Print button.
+const needsSheetTab = () => !!(window.matchMedia && (matchMedia('(pointer: coarse)').matches || matchMedia('(hover: none)').matches)) || (navigator.maxTouchPoints || 0) > 1;
+function openPlanSheetTab(){
+  const w = window.open('', '_blank');
+  if(!w){ showToast('Your browser blocked the PDF tab. Allow pop-ups for this page, then tap Save as PDF again.'); return; }
+  const bar = `<div class="savebar"><button type="button" onclick="window.print()">Save as PDF / Print</button>
+    <p><b>iPhone / iPad:</b> tap the button (or Share → Print), pinch out on the preview, then tap Share → Save to Files.<br>
+    <b>Android:</b> tap the button and choose “Save as PDF” as the printer, then tap the PDF icon.</p></div>
+    <style>.savebar{font:14px/1.45 'Public Sans',system-ui,sans-serif;background:#f1f1f1;border-bottom:2px solid #111;padding:12px 16px;position:sticky;left:0;top:0}
+    .savebar button{font:600 16px 'Public Sans',system-ui,sans-serif;background:#111;color:#fff;border:0;border-radius:6px;padding:12px 20px;margin-bottom:8px}
+    .savebar p{margin:0;max-width:60ch}@media print{.savebar{display:none}}</style>`;
+  w.document.open();
+  w.document.write(buildPlanSheet().replace('<div id="fit">', bar + '<div id="fit">'));
+  w.document.close();
+  w.document.title = 'Degree Log';
+  w.addEventListener('beforeprint', () => { try{ fitSheetToOnePage(w.document); }catch(e){} });
+  w.addEventListener('afterprint', () => { try{ const f = w.document.getElementById('fit'); if(f){ f.style.zoom = 1; f.style.width = ''; } }catch(e){} });
+}
+
 function downloadPlanSheet(){
+  if(needsSheetTab()){ openPlanSheetTab(); return; }
   const frame = document.createElement('iframe');
   frame.setAttribute('aria-hidden', 'true');
   frame.style.cssText = 'position:fixed;left:-10000px;top:0;width:1280px;height:800px;border:0';
