@@ -14,7 +14,7 @@
     --paper:#fff; --paper-deep:#f1f1f1;
     --ink:#111; --ink-soft:#555;
     --line:rgba(17,17,17,.22); --line-soft:rgba(17,17,17,.12);
-    --goph:#393F9D; --hydro:#266EA4; --soft:#936E03; --hard:#A7463C; --geochem:#087970; --struct:#7955A0; --paleo:#CB6620; --research:#9D437F; --fieldschool:#663C1C; --geog:#4C7A2A; --other:#6B6B6B;
+    --goph:#393F9D; --hydro:#266EA4; --soft:#936E03; --hard:#A7463C; --mineral:#D2557A; --geochem:#087970; --struct:#7955A0; --paleo:#CB6620; --research:#9D437F; --fieldschool:#663C1C; --geog:#4C7A2A; --other:#6B6B6B;
     --accent:var(--ink-soft);
     --serif:'Spectral',serif; --mono:'IBM Plex Mono',monospace; --sans:'Public Sans',sans-serif;
   }
@@ -23,7 +23,7 @@
     --paper:#141414; --paper-deep:#232323;
     --ink:#EDEDED; --ink-soft:#A3A3A3;
     --line:rgba(237,237,237,.25); --line-soft:rgba(237,237,237,.13);
-    --goph:#8F9EEF; --hydro:#72B8F2; --soft:#D4AB4F; --hard:#F98F82; --geochem:#5CC6B9; --struct:#C39DEE; --paleo:#F7A062; --research:#ED8BCA; --fieldschool:#B08060; --geog:#9CCB6A; --other:#9A9A9A;
+    --goph:#8F9EEF; --hydro:#72B8F2; --soft:#D4AB4F; --hard:#F98F82; --mineral:#F29AB5; --geochem:#5CC6B9; --struct:#C39DEE; --paleo:#F7A062; --research:#ED8BCA; --fieldschool:#B08060; --geog:#9CCB6A; --other:#9A9A9A;
   }
 
   /* ---------- base ---------- */
@@ -139,12 +139,12 @@
   .picker-preview .pp-prereq b{display:inline;font:600 12px var(--sans);margin:0;color:var(--ink)}
 
   /* one colour per track, set via --c; mandatory/field chips keep the plain ink style */
-  .tt-OTHER{--c:var(--other)} .tt-GEOG{--c:var(--geog)} .tt-GOPH{--c:var(--goph)} .tt-HYDRO{--c:var(--hydro)} .tt-SOFT{--c:var(--soft)} .tt-HARD{--c:var(--hard)} .tt-GEOCHEM{--c:var(--geochem)} .tt-STRUCT{--c:var(--struct)} .tt-PALEO{--c:var(--paleo)} .tt-RESEARCH{--c:var(--research)}
-  .chip-track-OTHER,.chip-track-GEOG,.chip-track-GOPH,.chip-track-HYDRO,.chip-track-SOFT,.chip-track-HARD,.chip-track-GEOCHEM,.chip-track-STRUCT,.chip-track-PALEO,.chip-track-RESEARCH{
+  .tt-OTHER{--c:var(--other)} .tt-GEOG{--c:var(--geog)} .tt-GOPH{--c:var(--goph)} .tt-HYDRO{--c:var(--hydro)} .tt-SOFT{--c:var(--soft)} .tt-HARD{--c:var(--hard)} .tt-MINERAL{--c:var(--mineral)} .tt-GEOCHEM{--c:var(--geochem)} .tt-STRUCT{--c:var(--struct)} .tt-PALEO{--c:var(--paleo)} .tt-RESEARCH{--c:var(--research)}
+  .chip-track-OTHER,.chip-track-GEOG,.chip-track-GOPH,.chip-track-HYDRO,.chip-track-SOFT,.chip-track-HARD,.chip-track-MINERAL,.chip-track-GEOCHEM,.chip-track-STRUCT,.chip-track-PALEO,.chip-track-RESEARCH{
     border-color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);
   }
   .chip-track-OTHER{--c:var(--other)} .chip-track-GEOG{--c:var(--geog)} .chip-track-GOPH{--c:var(--goph)} .chip-track-HYDRO{--c:var(--hydro)}
-  .chip-track-SOFT{--c:var(--soft)} .chip-track-HARD{--c:var(--hard)} .chip-track-GEOCHEM{--c:var(--geochem)} .chip-track-STRUCT{--c:var(--struct)} .chip-track-PALEO{--c:var(--paleo)} .chip-track-RESEARCH{--c:var(--research)}
+  .chip-track-SOFT{--c:var(--soft)} .chip-track-HARD{--c:var(--hard)} .chip-track-MINERAL{--c:var(--mineral)} .chip-track-GEOCHEM{--c:var(--geochem)} .chip-track-STRUCT{--c:var(--struct)} .chip-track-PALEO{--c:var(--paleo)} .chip-track-RESEARCH{--c:var(--research)}
   .tag{font-size:9px;text-transform:uppercase;letter-spacing:.03em;opacity:.65;margin-right:5px}
 
   .elective-wrap{display:inline-flex;align-items:center;gap:3px;cursor:grab}
@@ -292,7 +292,7 @@
     :root,:root[data-theme="dark"]{
       --paper:#fff;--paper-deep:#f1f1f1;--ink:#111;--ink-soft:#555;
       --line:rgba(17,17,17,.22);--line-soft:rgba(17,17,17,.12);
-      --goph:#808080;--hydro:#3B5B7E;--soft:#A8741F;--hard:#8A3A33;--geochem:#23776D;--struct:#6B4E8C;--paleo:#5E7A2E;--research:#191970;--geog:#3F7D3A;
+      --goph:#808080;--hydro:#3B5B7E;--soft:#A8741F;--hard:#8A3A33;--mineral:#A33B5E;--geochem:#23776D;--struct:#6B4E8C;--paleo:#5E7A2E;--research:#191970;--geog:#3F7D3A;
     }
     .no-print,#pickerOverlay,#toast{display:none!important}
     #column{border-left:1px solid #000}
@@ -335,11 +335,11 @@ header{padding:40px 28px 0}
 .stratum.collapsed .restore-btn:hover{border-color:var(--ink);color:var(--ink)}
 
 /* track courses: the whole chip carries the track colour */
-.chip.chip-track-OTHER,.chip.chip-track-GEOG,.chip.chip-track-GOPH,.chip.chip-track-HYDRO,.chip.chip-track-SOFT,.chip.chip-track-HARD,.chip.chip-track-GEOCHEM,.chip.chip-track-STRUCT,.chip.chip-track-PALEO,.chip.chip-track-RESEARCH{
+.chip.chip-track-OTHER,.chip.chip-track-GEOG,.chip.chip-track-GOPH,.chip.chip-track-HYDRO,.chip.chip-track-SOFT,.chip.chip-track-HARD,.chip.chip-track-MINERAL,.chip.chip-track-GEOCHEM,.chip.chip-track-STRUCT,.chip.chip-track-PALEO,.chip.chip-track-RESEARCH{
   background-color:color-mix(in srgb,var(--c) 25%,transparent);
   border-color:var(--c);
 }
-.chip.chip-track-OTHER:hover,.chip.chip-track-GEOG:hover,.chip.chip-track-GOPH:hover,.chip.chip-track-HYDRO:hover,.chip.chip-track-SOFT:hover,.chip.chip-track-HARD:hover,.chip.chip-track-GEOCHEM:hover,.chip.chip-track-STRUCT:hover,.chip.chip-track-PALEO:hover,.chip.chip-track-RESEARCH:hover{
+.chip.chip-track-OTHER:hover,.chip.chip-track-GEOG:hover,.chip.chip-track-GOPH:hover,.chip.chip-track-HYDRO:hover,.chip.chip-track-SOFT:hover,.chip.chip-track-HARD:hover,.chip.chip-track-MINERAL:hover,.chip.chip-track-GEOCHEM:hover,.chip.chip-track-STRUCT:hover,.chip.chip-track-PALEO:hover,.chip.chip-track-RESEARCH:hover{
   background-color:color-mix(in srgb,var(--c) 35%,transparent);
 }
 
@@ -431,11 +431,11 @@ html.tr-resizing body,html.tr-resizing #trToggle{transition:none}
 .chip.chip-track-FIELD:hover{background-color:color-mix(in srgb,var(--c) 35%,transparent)}
 .chip.req-erth.split-310{
   border:2px solid transparent;
-  border-image:linear-gradient(90deg,var(--soft) 50%,var(--hard) 50%) 1;
+  border-image:linear-gradient(90deg,var(--soft) 33.33%,var(--hard) 33.33% 66.66%,var(--mineral) 66.66%) 1;
   background-color:transparent;
-  background-image:linear-gradient(90deg,color-mix(in srgb,var(--soft) 14%,transparent) 50%,color-mix(in srgb,var(--hard) 14%,transparent) 50%);
+  background-image:linear-gradient(90deg,color-mix(in srgb,var(--soft) 14%,transparent) 33.33%,color-mix(in srgb,var(--hard) 14%,transparent) 33.33% 66.66%,color-mix(in srgb,var(--mineral) 14%,transparent) 66.66%);
 }
-.chip.req-erth.split-310:hover{background-image:linear-gradient(90deg,color-mix(in srgb,var(--soft) 26%,transparent) 50%,color-mix(in srgb,var(--hard) 26%,transparent) 50%)}
+.chip.req-erth.split-310:hover{background-image:linear-gradient(90deg,color-mix(in srgb,var(--soft) 26%,transparent) 33.33%,color-mix(in srgb,var(--hard) 26%,transparent) 33.33% 66.66%,color-mix(in srgb,var(--mineral) 26%,transparent) 66.66%)}
   /* phones and narrow windows: year buttons plus a jump to the progress panel sit in a bar at the bottom */
   .nav-progress{display:none}
   @media (max-width:800px){
@@ -620,7 +620,7 @@ const COURSES = {
   ERTH390OLD:{name:"Geoscience Field School (2026 prerequisites)", term:"Spring, Summer", units:3, prereq:"ERTH 210 and ERTH 290", antireq:"ERTH 390", description:"The development of field-based techniques in the collection, description, analysis, interpretation, and reporting of geoscientific field data and results. Includes navigation, geological mapping, field sampling, and geophysical methods. Multiple days of field work outside of the classroom in methods related to each of geology, hydrogeology, and geophysics."},
   ERTH410:{name:"Igneous Petrology", term:"Fall", units:3, prereq:"(ERTH 310/GLGY 313) and (ERTH 315/GLGY 323)", antireq:"ERTH 410 or GLGY 431", description:"Petrogenesis and tectonic setting of igneous rocks using field data, geochemistry and experiments. Identification and interpretation of igneous rocks based on mineralogy and texture. Application of igneous petrology to Earth processes and evolution."},
   ERTH415:{name:"Metamorphic Petrology", term:"Winter", units:3, prereq:"(ERTH 310/GLGY 313) and (ERTH 315/GLGY 323)", antireq:"ERTH 415 or GLGY 433", description:"Petrogenesis and tectonic setting of metamorphic rocks using field data, geochemistry and experiments. Identification and interpretation of metamorphic rocks based on mineralogy and texture. Application of metamorphic petrology to Earth processes and evolution."},
-  ERTH420:{name:"Sedimentary Petrology", term:"Fall", units:3, prereq:"ERTH 310,ERTH 315,ERTH 320", antireq:"ERTH 420 or (GLGY 463 and GLGY 483)", description:"Origin, occurrence, structure and diagenetic history of siliciclastic and carbonate sedimentary rocks. Consideration of provenance of transported components, and origin of biotic and abiotic constituents. Diagenetic history of rocks and its effects on mineralogy, texture, structures, porosity, and permeability. Laboratory includes hand specimens and thin-section petrography."},
+  ERTH420:{name:"Sedimentary Petrology", term:"Fall", units:3, prereq:"ERTH 310/ERTH 315/ERTH 320", antireq:"ERTH 420 or (GLGY 463 and GLGY 483)", description:"Origin, occurrence, structure and diagenetic history of siliciclastic and carbonate sedimentary rocks. Consideration of provenance of transported components, and origin of biotic and abiotic constituents. Diagenetic history of rocks and its effects on mineralogy, texture, structures, porosity, and permeability. Laboratory includes hand specimens and thin-section petrography."},
   ERTH425:{name:"Sedimentary Facies Models", term:"Winter", units:3, prereq:"(ERTH 310/GLGY 313) and (ERTH 320/GLGY 381)", antireq:"ERTH 425 or (GLGY 463 and GLGY 483)", description:"Multiscale description and interpretation of a range of terrestrial and marine sedimentary depositional settings of clastic, chemical/biochemical, and carbonaceous sedimentary rocks. Distinction of sedimentary facies and facies successions based on recognition of characteristic lithologies, structures, fossil content or geochemical composition, as applicable. Discussion of the mechanisms by which the biological, climatic, and geological evolution of the Earth is recorded in sedimentary rocks."},
   ERTH430:{name:"Physical Hydrology and Hydrogeology", term:"Fall", units:3, prereq:"(ERTH 330/GLGY 202/353), MATH 267/277, PHYS 211/221", antireq:"ERTH 430 or GLGY 401", description:"Hydrologic cycle, conservation principle, Darcy's Law, river and lake systems, groundwater flow systems, groundwater – surface water interaction, aquifer testing, soil hydrology, effective stress and geotechnical considerations, solute transport in groundwater."},
   ERTH435:{name:"Aqueous Geochemical Processes", term:"Fall", units:3, prereq:"(ERTH 315/GLGY 323), (ERTH 330/GLGY 353)", antireq:"ERTH 435 or GLGY 403", description:"Theoretical and applied aspects of aqueous geochemistry. Methods for collection and preservation of water samples in the field; laboratory analysis of water samples; theory and application of aqueous thermochemical models; biogeochemistry; applications and case studies. Includes a one-day, weekend field trip during the first several weeks of class."},
@@ -700,7 +700,7 @@ const PREREQS = {};
 Object.keys(COURSES).forEach(c => { PREREQS[c] = parsePrereqText(COURSES[c].prereq, c); });
 
 const TRACK_META = {
-  GOPH:{name:"Geophysics"}, GEOG:{name:"Geography"}, HYDRO:{name:"Hydrogeology"}, SOFT:{name:"Soft Rock"}, PALEO:{name:"Paleontology"}, HARD:{name:"Hard Rock"}, STRUCT:{name:"Structural"}, GEOCHEM:{name:"Geochemistry"}, RESEARCH:{name:"Research"}, OTHER:{name:"Other"}
+  GOPH:{name:"Geophysics"}, GEOG:{name:"Geography"}, HYDRO:{name:"Hydrogeology"}, SOFT:{name:"Sedimentary Geology"}, PALEO:{name:"Paleontology"}, HARD:{name:"Igneous/Metamorphic Geology"}, MINERAL:{name:"Mineralogy"}, STRUCT:{name:"Structural Geology"}, GEOCHEM:{name:"Geochemistry"}, RESEARCH:{name:"Research"}, OTHER:{name:"Other"}
 };
 const TRACK_LIST = Object.keys(TRACK_META);
 
@@ -714,10 +714,13 @@ const TRACK_REQS = {
            4:{fall:{}, winter:{elective:["ERTH530","ERTH545"]}} },
   SOFT:  { 2:{fall:{core:["ERTH310"], elective:["ERTH320"]}, winter:{core:["ERTH315"]}},
            3:{fall:{elective:["ERTH420"]}, winter:{elective:["ERTH425"]}},
-           4:{fall:{elective:[]}, winter:{elective:["ERTH520","ERTH550"]}} },
+           4:{fall:{elective:[]}, winter:{elective:["ERTH520"]}} },
   HARD:  { 2:{fall:{core:["ERTH310"]}, winter:{core:["ERTH315"]}},
            3:{fall:{elective:["ERTH410"]}, winter:{elective:["ERTH415"]}},
-           4:{fall:{elective:["ERTH510"]}, winter:{elective:["ERTH515"]}} },
+           4:{fall:{elective:["ERTH510"]}, winter:{}} },
+  MINERAL:{ 2:{fall:{core:["ERTH310"]}, winter:{}},
+           3:{fall:{}, winter:{}},
+           4:{fall:{}, winter:{elective:["ERTH515"]}} },
   PALEO: { 2:{fall:{}, winter:{elective:["ERTH350"]}},
            3:{fall:{elective:["ERTH420","ERTH450"]}, winter:{}},
            4:{fall:{}, winter:{}} },
@@ -776,7 +779,7 @@ const shownTrack = (code, trk) => {
   if(trk !== 'MAND' || MANDATORY_ERTH.indexOf(code) === -1) return trk;
   return FIELD_SCHOOL_TRACK[code] || REVERSE_MAP[code] || trk;
 };
-// ERTH 310 is core to both Soft Rock (yellow) and Hard Rock (red), so it is drawn half and half.
+// ERTH 310 is core to Sedimentary (yellow), Igneous/Metamorphic (red) and Mineralogy (pink), so it is drawn in thirds.
 const reqErthCls = (code, trk) => (shownTrack(code, trk) !== trk || code === 'GEOG380' ? ' req-erth' : '') + (code === 'ERTH310' && trk === 'MAND' ? ' split-310' : '');
 const levelOf      = code => Math.floor(parseInt(code.match(/\d+/)[0],10) / 100) * 100;
 const subjectOf    = code => code.match(/^[A-Z]+/)[0];
@@ -966,7 +969,7 @@ function chipTrackFor(code, track){
   if(MANDATORY_ALL.has(code)) return 'MAND';
   if(FIELD_CODES.indexOf(code) !== -1) return 'FIELD';
   // A prerequisite takes the colour of the field that lists it as an elective (ERTH 315 → Geochemistry),
-  // not whichever field's core slot happens to share it (Soft/Hard Rock). If the current field also lists it, keep that.
+  // not whichever field's core slot happens to share it (Sedimentary / Igneous-Metamorphic / Mineralogy). If the current field also lists it, keep that.
   const homes = ELECTIVE_HOMES[code];
   if(homes) return homes.includes(track) ? track : homes[0];
   if(track && TRACK_CODES[track]?.has(code)) return track;
@@ -1694,7 +1697,7 @@ document.addEventListener('keydown', e => {
 });
 
 /* ---------- course picker ---------- */
-const PICKER_TABS = ['NON','ERTH','GEOCHEM','GEOG','GOPH','HARD','HYDRO','PALEO','SOFT','STRUCT','RESEARCH','OTHER'];
+const PICKER_TABS = ['NON','ERTH','GEOCHEM','GEOG','GOPH','HARD','HYDRO','MINERAL','PALEO','SOFT','STRUCT','RESEARCH','OTHER'];
 const FIELD_SCHOOLS = ['ERTH290','ERTH390','ERTH590'];
 const PICKER_TAB_NAME = {ERTH:'Mandatory ERTH', NON:'Mandatory non-ERTH', FIELD:'Optional field', OPTION:'Options', SEASON:'Courses',
   ...Object.fromEntries(TRACK_LIST.map(t => [t, TRACK_META[t].name]))};
@@ -1720,7 +1723,9 @@ function tabCodes(tab){
   if(tab === 'ERTH')  return MANDATORY_ERTH;
   if(tab === 'NON')   return MANDATORY_NON;
   if(tab === 'FIELD') return FIELD_CODES;
-  return (TRACK_ALL_ELECTIVES[tab] || []).filter(c => c !== 'ERTH580B'); // 580B comes with 580A
+  const list = (TRACK_ALL_ELECTIVES[tab] || []).filter(c => c !== 'ERTH580B'); // 580B comes with 580A
+  // Mineralogy lists ERTH 310 in its own tab too (it is also one of the core ERTH courses).
+  return tab === 'MINERAL' ? ['ERTH310', ...list.filter(c => c !== 'ERTH310')] : list;
 }
 const tabChipTrack = tab => (tab === 'ERTH' || tab === 'NON') ? 'MAND' : tab;
 
@@ -1913,8 +1918,8 @@ function renderPickerBody(){
 
 const escHtml = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-const SHEET_COLORS = {MAND:'#111', FIELD:'#663C1C', GOPH:'#393F9D', HYDRO:'#266EA4', SOFT:'#936E03', HARD:'#A7463C', STRUCT:'#7955A0', PALEO:'#CB6620', GEOCHEM:'#087970', GEOG:'#4C7A2A', RESEARCH:'#9D437F', OTHER:'#555'};
-const SHEET_NAMES  = {GEOCHEM:'Geochemistry', GEOG:'Geography', GOPH:'Geophysics', HARD:'Hard Rock', HYDRO:'Hydrogeology', PALEO:'Paleontology', SOFT:'Soft Rock', STRUCT:'Structural', RESEARCH:'Independent Research', OTHER:'Other'};
+const SHEET_COLORS = {MAND:'#111', FIELD:'#663C1C', GOPH:'#393F9D', HYDRO:'#266EA4', SOFT:'#936E03', HARD:'#A7463C', MINERAL:'#D2557A', STRUCT:'#7955A0', PALEO:'#CB6620', GEOCHEM:'#087970', GEOG:'#4C7A2A', RESEARCH:'#9D437F', OTHER:'#555'};
+const SHEET_NAMES  = {GEOCHEM:'Geochemistry', GEOG:'Geography', GOPH:'Geophysics', HARD:'Igneous/Metamorphic Geology', MINERAL:'Mineralogy', HYDRO:'Hydrogeology', PALEO:'Paleontology', SOFT:'Sedimentary Geology', STRUCT:'Structural Geology', RESEARCH:'Independent Research', OTHER:'Other'};
 
 function sheetCategory(e){
   if(MANDATORY_ALL.has(e.code)) return 'MAND';
